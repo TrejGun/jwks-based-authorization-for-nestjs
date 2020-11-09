@@ -18,7 +18,7 @@
     "jwks-rsa": "1.11.0",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
-    "pg": "8.3.0",
+    "pg": "8.4.2",
     "rxjs": "6.6.2",
     "swagger-ui-express": "4.1.4",
     "typeorm": "0.2.29",
