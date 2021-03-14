@@ -7,7 +7,7 @@ import {UserService} from "../../user/user.service";
 import {UserEntity} from "../../user/user.entity";
 
 @Injectable()
-export class JwtGoogleStrategy extends PassportStrategy(Strategy, "google") {
+export class JwtAuth0Strategy extends PassportStrategy(Strategy, "auth0") {
   constructor(private readonly userService: UserService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -15,11 +15,11 @@ export class JwtGoogleStrategy extends PassportStrategy(Strategy, "google") {
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: "https://www.googleapis.com/oauth2/v3/certs",
+        jwksUri: `${process.env.AUTH0_ISSUER_URL}.well-known/jwks.json`,
       }),
-      issuer: "https://accounts.google.com",
+      audience: process.env.AUTH0_AUDIENCE,
+      issuer: `${process.env.AUTH0_ISSUER_URL}`,
       algorithms: ["RS256"],
-      scope: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"],
     });
   }
 

@@ -1,6 +1,5 @@
 import {config} from "dotenv";
 
-
 config();
 
 // This namespace redefines one from @types/node to reflect values from .env
@@ -13,6 +12,9 @@ declare global {
       // SERVER
       HOST: string;
       PORT: string;
+
+      AUTH0_ISSUER_URL: string;
+      AUTH0_AUDIENCE: string;
 
       // DB
       POSTGRES_URL: string;

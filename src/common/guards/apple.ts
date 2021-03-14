@@ -4,7 +4,7 @@ import {Reflector} from "@nestjs/core";
 import {AuthGuard} from "@nestjs/passport";
 
 @Injectable()
-export class GoogleGuard extends AuthGuard("google") implements CanActivate {
+export class AppleGuard extends AuthGuard("apple") implements CanActivate {
   constructor(private readonly reflector: Reflector) {
     super();
   }

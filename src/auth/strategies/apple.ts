@@ -7,7 +7,7 @@ import {UserService} from "../../user/user.service";
 import {UserEntity} from "../../user/user.entity";
 
 @Injectable()
-export class JwtGoogleStrategy extends PassportStrategy(Strategy, "google") {
+export class JwtAppleStrategy extends PassportStrategy(Strategy, "apple") {
   constructor(private readonly userService: UserService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -15,11 +15,11 @@ export class JwtGoogleStrategy extends PassportStrategy(Strategy, "google") {
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: "https://www.googleapis.com/oauth2/v3/certs",
+        jwksUri: "https://appleid.apple.com/auth/keys",
       }),
-      issuer: "https://accounts.google.com",
+      issuer: "https://appleid.apple.com",
       algorithms: ["RS256"],
-      scope: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"],
+      scope: ["name", "email"],
     });
   }
 

@@ -5,7 +5,6 @@ import {UserService} from "./user.service";
 import {UserEntity} from "./user.entity";
 import {TypeOrmConfigService} from "../typeorm.options";
 
-
 describe("userService", () => {
   let service: UserService;
 

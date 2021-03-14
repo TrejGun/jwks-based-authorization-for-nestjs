@@ -1,6 +1,5 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-
 export class SetupUser1563804021014 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.query("TRUNCATE TABLE test.user RESTART IDENTITY CASCADE;");
